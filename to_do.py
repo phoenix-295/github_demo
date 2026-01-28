@@ -35,6 +35,17 @@ def mark_completed(todo_list):
     except ValueError:
         print("Invalid input. Please enter a number.")
 
+def download_list(todo_list, filename=r"saved_lists\todo_list.txt"):
+    """Downloads the to-do list to a text file."""
+    try:
+        with open(filename, 'w') as file:
+            for item in todo_list:
+                file.write(f"{item}\n")
+        print(f"To-do list has been downloaded to '{filename}'.")
+    except IOError as e:
+        print(f"An error occurred while writing to the file: {e}")
+ 
+
 def main():
     """Main function to run the to-do list application."""
     todo_list = []
@@ -49,10 +60,16 @@ def main():
         elif choice == '3':
             mark_completed(todo_list)
         elif choice == '4':
+            download_location = input("Enter the filename (with path) to save the to-do list or leave blank for 'saved_lists\todo_list.txt': ")
+            if download_location.strip():
+                download_list(todo_list, download_location.strip())
+            else:
+                download_list(todo_list)
+        elif choice == '5':
             print("Exiting the To-Do List application. Goodbye!")
             break
         else:
-            print("Invalid choice. Please enter a number between 1 and 4.")
+            print("Invalid choice. Please enter a number between 1 and 5.")
 
 if __name__ == "__main__":
     main()
