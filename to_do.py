@@ -4,7 +4,8 @@ def display_menu():
     print("1. View To-Do List")
     print("2. Add Item to To-Do List")
     print("3. Mark Item as Completed")
-    print("4. Exit")
+    print("4. Download To-Do List")
+    print("5. Exit")
 
 def view_list(todo_list):
     """Displays the current to-do list."""
@@ -51,7 +52,7 @@ def main():
     todo_list = []
     while True:
         display_menu()
-        choice = input("Enter your choice (1-4): ")
+        choice = input("Enter your choice (1-5): ")
 
         if choice == '1':
             view_list(todo_list)
